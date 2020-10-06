@@ -9,7 +9,8 @@ python flask app.py run
 **Create user.**
     Add new user in system and request authenticated token.
 
-POST /register      json={'login':'user_one', 'password':'blabla'}
+POST /register      
+    json={'login':'user_one', 'password':'blabla'}
 
     Response streamed [201 CREATED]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '312')])
@@ -24,7 +25,8 @@ POST /register      json={'login':'user_one', 'password':'blabla'}
 **Login user**
     Update user token.
 
-POST /login        json={'login': 'your_login', 'password': 'your_password'}
+POST /login        
+    json={'login':'username', 'password':'user_password'}
 
     Response streamed [200 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '312')])
@@ -35,7 +37,8 @@ POST /login        json={'login': 'your_login', 'password': 'your_password'}
     Response json contained data: user_id, name, description, status, finishdate
     Heed authorization with token in headers.
 
-GET /get_tasks     json={'username':'user_one', 'field_name':'status'}, headers={'Authorization': f'Bearer {token}'}
+GET /get_tasks     
+    json={'username':'username', 'field_name':'ordered_field'}, headers={'Authorization': f'Bearer {token}'}
 
     Response streamed [200 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '621')])
@@ -58,17 +61,21 @@ GET /get_tasks     json={'username':'user_one', 'field_name':'status'}, headers=
 **Create task.**
     Create task for user. Need authorization.
 
-POST /add_task     json = {username, name, description, status, finishdate}
+POST /add_task     
+    json = {'username':''username, 'name':'task_name', 'description':'task desctiption', 'status':'integer with default', finishdate:{year, month, day, hour, minute, second}}
 
     Response streamed [201 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '621')])
     json = {username, name, description, status, finishdate}
+    status - 1(New task), 2(Planned), 3(In work), 4(Complete)
+    finishdate = {year, month, day, hour, minute, second}
 
 
 **Edit task.**
     Edit task, heed authorization.
 
-PUT /edit_task     json = {username, task_id, name, description, status, finishdate}
+PUT /edit_task     
+    json = {username, task_id, name, description, status, finishdate}
 
     Response streamed [200 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '621')])
@@ -80,7 +87,8 @@ PUT /edit_task     json = {username, task_id, name, description, status, finishd
     Action like POST and PUT - add oll sended data to table Log
     User may send get request to response log data
 
-GET /view_log      json={username}
+GET /view_log      
+    json={username}
 
     Response streamed [200 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '1609')])
