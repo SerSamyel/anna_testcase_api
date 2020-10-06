@@ -7,7 +7,7 @@ git clone https://github.com/SerSamyel/anna_test_api
 python flask app.py run 
 
 **Create user.**
-  Add new user in system and request authenticated token.
+    Add new user in system and request authenticated token.
 
 POST /register      
     json={'login':'user_one', 'password':'blabla'}
