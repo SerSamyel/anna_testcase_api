@@ -83,6 +83,7 @@ GET /view_log json={username}
 Response streamed [200 OK]
 Headers([('Content-Type', 'application/json'), ('Content-Length', '1609')])
 json = {{user_id, time, method, data}, ... {user_id, time, method, data}}
+
 user_id - id for user in database
 time - time create changes
 method - post or edit
@@ -104,3 +105,23 @@ exception_message = {No login provided, Login is already in use,
                      Password must be between 8 and 50 characters,
                      No user_id provided
                      etc...}
+
+
+**DB.**
+IF your need to create db manually or use advanced functionality.
+
+    Create a migration repository:
+        python manage.py db init
+
+    Generate an initial migration:
+        python manage.py db migrate -m "Initial migration."
+        
+    Apply the migration to the database:
+        python manage.py db upgrade
+    
+    Downgrade DB:
+        python manage.py db downgrade
+    
+    Help:
+        python manage.py db --help
+        
