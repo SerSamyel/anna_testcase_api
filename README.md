@@ -13,7 +13,7 @@ POST /register, json={'login':'user_one', 'password':'blabla'}
 
 Response streamed [201 CREATED]
 Headers([('Content-Type', 'application/json'), ('Content-Length', '312')])
-{"access_token":"very long token", "msg":"User successfully created", "user_login":"user444"}
+json = {"access_token":"very long token", "msg":"User successfully created", "user_login":"user444"}
 
 login - must be between 5 and 20 characters
 password - any, not empty
@@ -28,7 +28,7 @@ POST /login, json={'login': 'your_login', 'password': 'your_password'}
 
 Response streamed [200 OK]
 Headers([('Content-Type', 'application/json'), ('Content-Length', '312')])
-{"access_token":"token", "user_login":"user"}
+json = {"access_token":"token", "user_login":"user"}
 
 
 **Get user tasks**
