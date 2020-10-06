@@ -7,7 +7,7 @@ git clone https://github.com/SerSamyel/anna_test_api
 python flask app.py run 
 
 **Create user.**
-    Add new user in system and request authenticated token.
++ul Add new user in system and request authenticated token.
 
 POST /register      
     json={'login':'user_one', 'password':'blabla'}
@@ -62,7 +62,7 @@ GET /get_tasks
     Create task for user. Need authorization.
 
 POST /add_task     
-    json = {'username':''username, 'name':'task_name', 'description':'task desctiption', 'status':'integer with default', finishdate:{year, month, day, hour, minute, second}}
+    json = {'username':''username, 'name':'task_name', 'description':'task desctiption', 'status':'integer with default', 'finishdate':{year, month, day, hour, minute, second}}
 
     Response streamed [201 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '621')])
@@ -75,7 +75,7 @@ POST /add_task
     Edit task, heed authorization.
 
 PUT /edit_task     
-    json = {username, task_id, name, description, status, finishdate}
+    json = {'username':'username', 'task_id':'task_id_int', 'name':'edit_name', 'description':'edit_desc', 'status':'edit_stat', 'finishdate':{year, month, day, hour, minute, second}}
 
     Response streamed [200 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '621')])
@@ -88,7 +88,7 @@ PUT /edit_task
     User may send get request to response log data
 
 GET /view_log      
-    json={username}
+    json={'username':'username'}
 
     Response streamed [200 OK]
     Headers([('Content-Type', 'application/json'), ('Content-Length', '1609')])
