@@ -47,6 +47,7 @@ def login():
 
 
 @app.route('/get_tasks', methods=['GET'])
+@jwt_required
 def get_user_task():
     params = request.get_json()
     field_name = params.get('field_name', None)
@@ -66,6 +67,7 @@ def get_user_task():
 
 
 @app.route('/add_task', methods=['POST'])
+@jwt_required
 def add_user_task():
     params = request.get_json()
     username = params.get('username')
@@ -120,6 +122,7 @@ def add_user_task():
 
 
 @app.route('/edit_task', methods=['PUT'])
+@jwt_required
 def edit_user_task():
     params = request.get_json()
     username, task_id = params.get('username'), params.get('task_id')
@@ -178,6 +181,7 @@ def edit_user_task():
 
 
 @app.route('/view_log', methods=['GET'])
+@jwt_required
 def log_view():
     username = request.get_json().get('username')
     user = User.query.filter(User.login == username).first()

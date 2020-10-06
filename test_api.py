@@ -1,4 +1,3 @@
-import pytest
 from .app import client
 # test for CLEAR DB or TEST DB !
 
