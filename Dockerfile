@@ -13,6 +13,8 @@ RUN apt-get update
 apt-get -y install postgresql-12
 
 # Install python
+RUN apt install software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get install python3.8
 
 # Upgrade pip
