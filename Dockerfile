@@ -26,7 +26,7 @@ WORKDIR flask_api
 COPY ./anna_test_api
 
 # Install python library
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r anna_test_api/requirements.txt
 
 # Set user, password and database name for postgresql
 FROM /var/lib/postgresql/
@@ -35,9 +35,9 @@ ENV POSTGRES_PASSWORD admin
 ENV POSTGRES_DB taskmaker
 
 CMD
-anna_test_api/manage.py db init &&
-anna_test_api/manage.py db migrate "Initial migration." &&
-anna_test_api/manage.py db upgrade
+python anna_test_api/manage.py db init &&
+python anna_test_api/manage.py db migrate "Initial migration." &&
+python anna_test_api/manage.py db upgrade
 
 # Run
 ENTRYPOINT FLASK_APP=/anna_test_api/app.py flask run
