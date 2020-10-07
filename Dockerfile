@@ -13,7 +13,7 @@ RUN apt-get update
 apt-get -y install postgresql-12
 
 # Install python
-RUN apt-get install python 3.8.5
+RUN apt-get install python3.8
 
 # Upgrade pip
 RUN pip install --upgrade pip
